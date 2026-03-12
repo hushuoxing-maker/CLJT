@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>潮流街头 · 潮流街头海报提示词生成器</title>
+<title>潮流街头  · 潮流街头海报提示词生成器  - 古月AI智能体</title>
 
 <style>
 *{
@@ -141,7 +141,7 @@ body{
 <body>
 
 <div class="header">
-<h1>潮流街头 · 海报提示词生成器</h1>
+<h1>潮流街头  · 潮流街头海报提示词生成器  - 古月AI智能体</h1>
 </div>
 
 <div class="inputBox">
@@ -188,10 +188,10 @@ function generate(){
   for(let i=1;i<=20;i++){
     // 生成3个辅助文字
     let assistArr=[rand(tags),rand(tags),rand(tags)];
-
     let assistHTML=assistArr.map(tag=>`<span class="assistBox">${tag}</span>`).join("");
 
-    let text=`海报类型：${type}
+    let textHTML=`
+海报类型：${type}
 
 主标题：${title}
 
@@ -215,7 +215,7 @@ ${rand(visuals)} + 涂鸦字体墙面 + 喷漆飞溅
     let card=document.createElement("div");
     card.className="card";
     card.innerHTML=`
-      <div class="prompt">${text}</div>
+      <div class="prompt">${textHTML}</div>
       <button class="copyBtn">复制提示词</button>
     `;
     container.appendChild(card);
@@ -223,7 +223,7 @@ ${rand(visuals)} + 涂鸦字体墙面 + 喷漆飞溅
     let btn=card.querySelector(".copyBtn");
     btn.onclick=function(){
       // 复制纯文字，不带 HTML 标签
-      let plainText = text.replace(/<[^>]+>/g,"");
+      let plainText = textHTML.replace(/<[^>]+>/g,"");
       navigator.clipboard.writeText(plainText);
       btn.innerText="复制成功";
       setTimeout(()=>{btn.innerText="复制提示词";},3000);
